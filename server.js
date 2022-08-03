@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config()
 const cors = require ('cors');
 const { routes } = require('./routes');
 const app = express();
@@ -7,7 +8,7 @@ const port = 3000;
 app.use(cors())
 
 
-mongoose.connect('mongodb+srv://g7miserski:1234@softfocus-api.immlra8.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGO_SERVER);
 //confirma conexão
 mongoose.connection.on('connected', function () {
   console.log('Connected to Database');
